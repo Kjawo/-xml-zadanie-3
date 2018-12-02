@@ -10,9 +10,16 @@
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Templates -->
     <xsl:template name="BookStore" match="/bookStore">
         <xsl:element name="clientReport">
+            <xsl:call-template name="ReportInformation" />
             <xsl:apply-templates select="child::books" />
+            <xsl:call-template name="Statistics" />
         </xsl:element>
     </xsl:template>
+        <xsl:template name="ReportInformation">
+            <xsl:element name="reportInformation">
+                <!-- TODO: Insert information about report, i.e. time of creation, authors, etc. -->
+            </xsl:element>
+        </xsl:template>
         <xsl:template name="Books" match="books">
             <xsl:apply-templates select="child::book" />
         </xsl:template>
@@ -80,5 +87,11 @@
                         <xsl:value-of select="." />
                     </xsl:element>
                 </xsl:template>
+        <xsl:template name="Statistics">
+            <xsl:element name="statistics">
+                <!-- TODO: Insert statistics, summed prices, etc. -->
+            </xsl:element>
+        </xsl:template>
+
 </xsl:stylesheet>
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
