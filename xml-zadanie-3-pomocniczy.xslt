@@ -22,9 +22,9 @@
         <isbn><xsl:value-of select="isbn"/></isbn>
         </book>
     </xsl:template>
-    <xsl:template match="header"/>
+    <!--<xsl:template match="header"/>
     <xsl:template match="authors"/>
     <xsl:template match="genres"/>
     <xsl:template match="coverTypes"/>
-    <xsl:template match="publishers"/>
+    <xsl:template match="publishers"/>-->
 </xsl:stylesheet>
