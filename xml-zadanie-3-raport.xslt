@@ -137,9 +137,11 @@
         <xsl:element name="bookCountsPerAuthor">
             <xsl:for-each select="/bookStore/authors/author">
                 <xsl:sort select="lastName" />
+
                 <xsl:variable name="authorID" select="@authorID" />
                 <xsl:variable name="bookCount" select="count(/bookStore/books/book[@authorID = $authorID])" />
                 <xsl:element name="authorsBookCount">
+
                     <xsl:element name="author">
                         <xsl:value-of select="concat(
                               /bookStore/authors/author[@authorID = $authorID]/firstName, ' ',
@@ -154,4 +156,4 @@
     </xsl:template>
 
 </xsl:stylesheet>
-<!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
