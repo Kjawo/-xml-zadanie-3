@@ -3,7 +3,7 @@
 <!-- File: xml-zadanie-3-raport.xslt -->
 <!-- Authors: Konrad Jaworski, Tomasz Witczak -->
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  Output -->
     <xsl:output method="xml" version="1.0" encoding="UTF-8" standalone="yes" />
 
@@ -18,6 +18,7 @@
         <xsl:template name="ReportInformation">
             <xsl:element name="reportInformation">
                 <!-- TODO: Insert information about report, i.e. time of creation, authors, etc. -->
+                <!-- <xsl:value-of  select="current-dateTime()"/> -->
             </xsl:element>
         </xsl:template>
         <xsl:template name="Books" match="books">
@@ -90,6 +91,25 @@
         <xsl:template name="Statistics">
             <xsl:element name="statistics">
                 <!-- TODO: Insert statistics, summed prices, etc. -->
+                <xsl:element name="BooksCount">
+                    <xsl:value-of select="count(/bookStore/books/book)"/>
+                </xsl:element>
+                <xsl:element name="AveragePageCount">
+                    <xsl:value-of select="round( sum(/bookStore/books/book/pages) div count(/bookStore/books/book) )"/>
+                </xsl:element>
+                <xsl:element name="AveragePrice">
+                    <xsl:value-of select="sum(/bookStore/books/book/price) div count(/bookStore/books/book)"/>
+                </xsl:element>
+                <xsl:element name="MostCommonCoverType">
+                    <xsl:choose>
+                        <xsl:when test="count(/bookStore/books/book[@coverTypeID='paperback']) > round(count(/bookStore/books/book) div 2)">
+                            paperback
+                        </xsl:when>
+                        <xsl:otherwise>
+                            hardback
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:element>
             </xsl:element>
         </xsl:template>
 
