@@ -67,8 +67,8 @@
     </genres>
 
     <coverTypes>
-        <coverType coverTypeID="paperback">paperback</coverType>
-        <coverType coverTypeID="hardback">hardback</coverType>
+        <coverType coverTypeID="paperback">miękka</coverType>
+        <coverType coverTypeID="hardback">twarda</coverType>
     </coverTypes>
 
     <publishers>
